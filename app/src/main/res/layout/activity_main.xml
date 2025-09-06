@@ -39,7 +39,10 @@
             android:id="@+id/next_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/next_button"/>
+            android:text="@string/next_button"
+            app:icon="@drawable/baseline_arrow_right_24"
+            app:iconGravity="end"
+            />
 
 
 </LinearLayout>
