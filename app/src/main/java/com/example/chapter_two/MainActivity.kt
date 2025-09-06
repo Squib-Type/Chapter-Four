@@ -1,13 +1,9 @@
-package com.example.chapter_one
+package com.example.chapter_two
 
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
-import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
 
