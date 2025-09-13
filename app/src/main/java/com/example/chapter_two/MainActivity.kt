@@ -147,7 +147,7 @@ class MainActivity : AppCompatActivity() {
         val correctAnswer = questionBank[currentIndex].answer
 
         val messageResID = if (userAnswer == correctAnswer) {
-
+            counterCorrect++
             R.string.correct_toast
         } else{
             R.string.incorrect_toast
@@ -168,7 +168,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun checkScore(){
         val questionsCount = questionBank.size
-        val totalScore = counterCorrect.toDouble()/questionsCount.toDouble()
+        val totalScore = (counterCorrect.toDouble()/questionsCount.toDouble()) * 100
 
         val percentScore = String.format("%.1f", totalScore)
 
