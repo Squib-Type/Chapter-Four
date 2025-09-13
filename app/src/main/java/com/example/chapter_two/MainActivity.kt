@@ -151,6 +151,12 @@ class MainActivity : AppCompatActivity() {
         } else{
             R.string.incorrect_toast
         }
+
+        Toast.makeText( this,
+            messageResID,
+            Toast.LENGTH_SHORT)
+            .show()
+
         if ((currentIndex + 1) == questionBank.size) {
             checkScore()
             counterCorrect = 0
@@ -160,10 +166,7 @@ class MainActivity : AppCompatActivity() {
         binding.trueButton.isEnabled = !(binding.trueButton.isEnabled)
         binding.falseButton.isEnabled = !(binding.falseButton.isEnabled)
 
-        Toast.makeText( this,
-            messageResID,
-            Toast.LENGTH_SHORT)
-            .show()
+
 
     }
     private fun checkScore(){
