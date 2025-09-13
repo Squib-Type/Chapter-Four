@@ -70,7 +70,6 @@ class MainActivity : AppCompatActivity() {
             // val questionTextResId = questionBank[currentIndex].textResId
             // binding.questionTextView.setText(questionTextResId)
             updateQuestion()
-            checkScore()
 
         }
         binding.prevButton.setOnClickListener {
@@ -152,8 +151,9 @@ class MainActivity : AppCompatActivity() {
         } else{
             R.string.incorrect_toast
         }
-        if (currentIndex == questionBank.size) {
+        if ((currentIndex + 1) == questionBank.size) {
             checkScore()
+            counterCorrect = 0
         }
 
 
@@ -174,7 +174,7 @@ class MainActivity : AppCompatActivity() {
 
         Toast.makeText(
             this,
-            percentScore,
+            "$percentScore %",
             Toast.LENGTH_LONG
         ).show()
 
