@@ -162,11 +162,8 @@ class MainActivity : AppCompatActivity() {
             counterCorrect = 0
         }
 
-
         binding.trueButton.isEnabled = !(binding.trueButton.isEnabled)
         binding.falseButton.isEnabled = !(binding.falseButton.isEnabled)
-
-
 
     }
     private fun checkScore(){
