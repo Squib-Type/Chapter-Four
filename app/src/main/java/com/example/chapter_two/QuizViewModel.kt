@@ -8,6 +8,7 @@ import kotlin.text.toDouble
 
 private const val TAG = "QuizViewModel"
 const val CURRENT_INDEX_KEY = "CURRENT_INDEX_KEY"
+const val CURRENT_COUNTER_CORRECT = "CURRENT_COUNTER_CORRECT"
 class QuizViewModel(private val savedStateHandle: SavedStateHandle): ViewModel() {
 
    /* init {
@@ -33,7 +34,9 @@ class QuizViewModel(private val savedStateHandle: SavedStateHandle): ViewModel()
     var currentIndex
         get() = savedStateHandle.get(CURRENT_INDEX_KEY)?: 0
         set(value) = savedStateHandle.set(CURRENT_INDEX_KEY, value)
-    var counterCorrect = 0
+    var counterCorrect
+        get() = savedStateHandle.get(CURRENT_COUNTER_CORRECT)?: 0
+        set(value) = savedStateHandle.set(CURRENT_COUNTER_CORRECT, value)
 
     val currentQuestionAnswer: Boolean
         get() = questionBank[currentIndex].answer
