@@ -183,15 +183,14 @@ class MainActivity : AppCompatActivity() {
 
     }
     private fun checkScore(){
-        // val questionsCount = questionBank.size
-        //val totalScore = (counterCorrect.toDouble()/questionsCount.toDouble()) * 100
-        //val percentScore = String.format("%.1f", totalScore)
+        val questionsCount = quizViewModel.questionBank.size
+        val totalScore = (quizViewModel.counterCorrect.toDouble()/questionsCount.toDouble()) * 100
+        val percentScore = String.format("%.1f", totalScore)
 
-        quizViewModel.quizCheckScore()
 
         Toast.makeText(
             this,
-            "$quizViewModel.percentScore %",
+            "$percentScore %",
             Toast.LENGTH_LONG
         ).show()
 

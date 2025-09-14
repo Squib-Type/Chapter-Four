@@ -1,12 +1,14 @@
 package com.example.chapter_two
 
 import android.util.Log
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import kotlin.rem
 import kotlin.text.toDouble
 
 private const val TAG = "QuizViewModel"
-class QuizViewModel: ViewModel() {
+const val CURRENT_INDEX_KEY = "CURRENT_INDEX_KEY"
+class QuizViewModel(private val savedStateHandle: SavedStateHandle): ViewModel() {
 
    /* init {
 
@@ -28,7 +30,9 @@ class QuizViewModel: ViewModel() {
        Question(R.string.question_americas, true),
        Question(R.string.question_asia, true)
    )
-    var currentIndex = 0
+    var currentIndex
+        get() = savedStateHandle.get(CURRENT_INDEX_KEY)?: 0
+        set(value) = savedStateHandle.set(CURRENT_INDEX_KEY, value)
     var counterCorrect = 0
 
     val currentQuestionAnswer: Boolean
@@ -46,11 +50,6 @@ class QuizViewModel: ViewModel() {
 
         currentIndex = (currentIndex - 1) % questionBank.size
 
-    }
-    fun quizCheckScore(){
-        val questionsCount = questionBank.size
-        val totalScore = (counterCorrect.toDouble()/questionsCount.toDouble()) * 100
-        val percentScore = String.format("%.1f", totalScore)
     }
 
 }
