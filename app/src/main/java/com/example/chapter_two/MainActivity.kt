@@ -1,10 +1,12 @@
 package com.example.chapter_two
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
@@ -18,6 +20,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var trueButton : Button
     private lateinit var falseButton : Button
     private val quizViewModel: QuizViewModel by viewModels()
+
+    private val cheatLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        // Handle the result
+        if (result.resultCode == Activity.RESULT_OK) {
+            quizViewModel.isCheater =
+                result.data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
+        }
+    }
 
     /*
     private val questionBank = listOf(
@@ -94,8 +106,14 @@ class MainActivity : AppCompatActivity() {
 
         binding.cheatButton.setOnClickListener {
             //start Cheat Activity
-            val intent = Intent(this, CheatActivity::class.java)
-            startActivity(intent)
+            // val intent = Intent(this, CheatActivity::class.java)
+            val answerIsTrue = quizViewModel.currentQuestionAnswer
+            val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue)
+
+            // startActivity(intent)
+            cheatLauncher.launch(intent)
+
+
         }
 
         binding.questionTextView.setOnClickListener {
