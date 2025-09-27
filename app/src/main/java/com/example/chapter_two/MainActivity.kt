@@ -187,16 +187,23 @@ class MainActivity : AppCompatActivity() {
     private fun checkAnswer(userAnswer:Boolean){
         // val correctAnswer = questionBank[currentIndex].answer
         val correctAnswer = quizViewModel.currentQuestionAnswer
-
-        val messageResID = if (userAnswer == correctAnswer) {
+        val messageResId = when {
+            quizViewModel.isCheater -> R.string.judgment_toast
+            userAnswer == correctAnswer ->  {
+                quizViewModel.counterCorrect++
+                R.string.correct_toast
+            }
+            else -> R.string.incorrect_toast
+        }
+       /* val messageResID = if (userAnswer == correctAnswer) {
             quizViewModel.counterCorrect++
             R.string.correct_toast
         } else{
             R.string.incorrect_toast
-        }
+        } */
 
         Toast.makeText( this,
-            messageResID,
+            messageResId,
             Toast.LENGTH_SHORT)
             .show()
 
