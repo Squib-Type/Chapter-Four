@@ -1,5 +1,6 @@
 package com.example.chapter_two
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -79,6 +80,7 @@ class MainActivity : AppCompatActivity() {
             updateQuestion()
 
         }
+
         binding.prevButton.setOnClickListener {
             // currentIndex = (currentIndex - 1) % questionBank.size
 
@@ -89,6 +91,13 @@ class MainActivity : AppCompatActivity() {
             updateQuestion()
 
         }
+
+        binding.cheatButton.setOnClickListener {
+            //start Cheat Activity
+            val intent = Intent(this, CheatActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.questionTextView.setOnClickListener {
             // currentIndex = (currentIndex + 1) % questionBank.size
 
