@@ -47,10 +47,6 @@ class QuizViewModel(private val savedStateHandle: SavedStateHandle): ViewModel()
         cheatArray = questionState
     }
 
-    /*var isCheater: Boolean
-        get() = savedStateHandle.get(IS_CHEATER_KEY) ?: false
-        set(value) = savedStateHandle.set(IS_CHEATER_KEY, value)
-    */
     var currentIndex
         get() = savedStateHandle.get(CURRENT_INDEX_KEY)?: 0
         set(value) = savedStateHandle.set(CURRENT_INDEX_KEY, value)
