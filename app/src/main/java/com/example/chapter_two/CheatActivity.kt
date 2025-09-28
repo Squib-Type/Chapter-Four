@@ -11,7 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.chapter_two.databinding.ActivityCheatBinding
 
 private const val EXTRA_ANSWER_IS_TRUE = "com.example.chapter_two.answer_is_true"
- const val EXTRA_ANSWER_SHOWN = "com.example.chapter_two.answer_shown"
+const val EXTRA_ANSWER_SHOWN = "com.example.chapter_two.answer_shown"
 class CheatActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCheatBinding
